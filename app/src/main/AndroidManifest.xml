@@ -28,9 +28,6 @@
             android:name=".CurrentWorkoutActivity"
             android:exported="true" />
         <activity
-            android:name=".NewProfile"
-            android:exported="true" />
-        <activity
             android:name=".WorkoutActivity"
             android:exported="true">
             <intent-filter>

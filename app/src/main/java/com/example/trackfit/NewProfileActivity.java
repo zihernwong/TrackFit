@@ -9,6 +9,6 @@ public class NewProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_profile2);
+        setContentView(R.layout.activity_new_profile);
     }
 }

@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/School/CS407/TrackFit/app/src/main/res/layout/activity_workout.xml" value="0.25416666666666665" />
+        <entry key="..\:/github/trackfit/app/src/main/res/layout/activity_workout.xml" value="0.46822916666666664" />
+        <entry key="..\:/github/trackfit/app/src/main/res/layout/fragment_previous_workout.xml" value="0.46822916666666664" />
+        <entry key="..\:/github/trackfit/app/src/main/res/layout/fragment_profile.xml" value="0.45416666666666666" />
+        <entry key="..\:/github/trackfit/app/src/main/res/layout/fragment_workout.xml" value="0.46822916666666664" />
+        <entry key="..\:/github/trackfit/app/src/main/res/menu/menu.xml" value="0.46822916666666664" />
       </map>
     </option>
   </component>

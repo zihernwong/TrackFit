@@ -29,7 +29,7 @@ public class WorkoutActivity extends AppCompatActivity {
                     fragment = new WorkoutFragment();
                     break;
                 case R.id.profile:
-                    fragment = new ProfileFragment();
+                    fragment = new ProfileDetailsFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();

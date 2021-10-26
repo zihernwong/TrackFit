@@ -13,15 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackFit">
         <activity
-            android:name=".ProfileDetailsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".PreviousWorkoutDetailsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".PreviousWorkoutsActivity"
-            android:exported="true" />
-        <activity
             android:name=".NewProfileActivity"
             android:exported="true">
             <intent-filter>
@@ -30,12 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EndWorkoutActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CurrentWorkoutActivity"
-            android:exported="true" />
         <activity
             android:name=".WorkoutActivity"
             android:exported="true"/>

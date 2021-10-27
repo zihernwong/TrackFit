@@ -25,14 +25,14 @@ public class NewProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_profile);
 
         //TODO: Will check shared preferences for profile details. If none are found we display this page
-        // where a new user will enter their details. If details are found then we display the WorkoutActivity
+        // where a new user will enter their details. If details are found then we display the main application
         // but we still need to get location.
         boolean profileFound = true; // Hardcoded for testing until functionality is implemented
 
         locationStartup();
 
          if (profileFound) {
-             displayWorkout();
+             displayApp();
          }
 
     }
@@ -69,8 +69,8 @@ public class NewProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void displayWorkout() {
-        Intent intent = new Intent(this, WorkoutActivity.class);
+    public void displayApp() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

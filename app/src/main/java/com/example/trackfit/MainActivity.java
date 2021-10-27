@@ -8,12 +8,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationBarView;
 
-public class WorkoutActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workout);
+        setContentView(R.layout.activity_main);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();
     }
 
     // Bottom navigation bar selecting one of the three activities (Xiao)

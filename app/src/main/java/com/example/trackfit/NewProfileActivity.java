@@ -27,7 +27,7 @@ public class NewProfileActivity extends AppCompatActivity {
         //TODO: Will check shared preferences for profile details. If none are found we display this page
         // where a new user will enter their details. If details are found then we display the main application
         // but we still need to get location.
-        boolean profileFound = true; // Hardcoded for testing until functionality is implemented
+        boolean profileFound = false; // Hardcoded for testing until functionality is implemented
 
         locationStartup();
 

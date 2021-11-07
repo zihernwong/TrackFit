@@ -13,11 +13,15 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class NewProfileActivity extends AppCompatActivity {
 
     LocationManager locationManager;
     LocationListener locationListener;
+    Button createProfileButton;
+    boolean profileFound = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +31,20 @@ public class NewProfileActivity extends AppCompatActivity {
         //TODO: Will check shared preferences for profile details. If none are found we display this page
         // where a new user will enter their details. If details are found then we display the main application
         // but we still need to get location.
-        boolean profileFound = true; // Hardcoded for testing until functionality is implemented
 
         locationStartup();
 
-         if (profileFound) {
-             displayApp();
-         }
+         if (profileFound) { displayApp(); }
+
+        createProfileButton = findViewById(R.id.newProfileButton);
+        createProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                // TODO: Save data in shared preferences first
+                displayApp();
+            }
+        });
 
     }
 

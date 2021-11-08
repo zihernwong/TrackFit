@@ -100,7 +100,7 @@
         app:layout_constraintVertical_bias="0.618" />
 
     <TextView
-        android:id="@+id/heightTextViewNewProfile"
+        android:id="@+id/heightTextViewProfileDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Height:"
@@ -113,17 +113,17 @@
         app:layout_constraintVertical_bias="0.723" />
 
     <TextView
-        android:id="@+id/weightTextViewNewProfile"
+        android:id="@+id/weightTextViewProfileDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weight:"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.822" />
+        app:layout_constraintVertical_bias="0.827" />
 
     <EditText
         android:id="@+id/editDOBNewProfile"
@@ -142,7 +142,7 @@
         app:layout_constraintVertical_bias="0.625" />
 
     <EditText
-        android:id="@+id/editWeightNewProfile"
+        android:id="@+id/editWeightProfileDetails"
         android:layout_width="60dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -157,7 +157,7 @@
         app:layout_constraintVertical_bias="0.839" />
 
     <EditText
-        android:id="@+id/editHeightFeetNewProfile"
+        android:id="@+id/editHeightFeetProfileDetails"
         android:layout_width="60dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -172,7 +172,7 @@
         app:layout_constraintVertical_bias="0.731" />
 
     <TextView
-        android:id="@+id/feetTextViewNewProfile"
+        android:id="@+id/feetTextViewProfileDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ft."
@@ -185,7 +185,7 @@
         app:layout_constraintVertical_bias="0.722" />
 
     <EditText
-        android:id="@+id/editHeightInchesNewProfile"
+        android:id="@+id/editHeightInchesProfileDetails"
         android:layout_width="60dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -200,7 +200,7 @@
         app:layout_constraintVertical_bias="0.729" />
 
     <TextView
-        android:id="@+id/inchesTextViewNewProfile"
+        android:id="@+id/inchesTextViewProfileDetials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="in."
@@ -233,9 +233,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
+        app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.827" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

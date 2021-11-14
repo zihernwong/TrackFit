@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/quoteTextView"
+        android:id="@+id/quoteHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quote for Workout"
@@ -17,13 +17,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/currentWeatherTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current weather"
+        android:text="Current Weather"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,14 +44,28 @@
         app:layout_constraintVertical_bias="0.849" />
 
     <TextView
-        android:id="@+id/weatherTextView"
+        android:id="@+id/weatherLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Madison, WI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.52" />
+
+    <TextView
+        android:id="@+id/quoteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Quote"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.207" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         Button startWorkout = (Button) view.findViewById(R.id.startWorkoutButton);
         quotesTextView = (TextView) view.findViewById(R.id.quoteTextView) ;
         String toDisplayQuote ="";
-        int randQuote = (int)(Math.random() * 10)-1;
+        int randQuote = (int)(Math.random() * 9);
         toDisplayQuote = quotes.get(randQuote);
         quotesTextView.setText(toDisplayQuote);
         startWorkout.setOnClickListener(this);

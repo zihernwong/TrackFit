@@ -29,6 +29,19 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();
+        switch (v.getId()) {
+            case R.id.deleteWorkoutButton:
+                Bundle bundle = new Bundle();
+                bundle.putString("sourceLocation", "endWorkoutFragment");
+                DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
+                deleteDialog.setArguments(bundle);
+                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete workout dialog");
+                break;
+            case R.id.saveWorkoutButton:
+                // TODO: Save the data
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();
+                break;
+        }
+
     }
 }

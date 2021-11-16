@@ -27,10 +27,7 @@ public class CurrentWorkoutFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.saveWorkoutButton:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new EndWorkoutFragment()).commit();
-                break;
-        }
+        EndWorkoutDialogFragment endDialog = new EndWorkoutDialogFragment();
+        endDialog.show(getActivity().getSupportFragmentManager(), "end workout dialog");
     }
 }

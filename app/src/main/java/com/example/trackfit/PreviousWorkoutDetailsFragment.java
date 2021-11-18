@@ -35,7 +35,7 @@ public class PreviousWorkoutDetailsFragment extends Fragment implements View.OnC
         switch (v.getId()) {
             case R.id.previousWorkoutDeleteButton:
                 Bundle bundle = new Bundle();
-                bundle.putString("sourceLocation", "endWorkoutFragment");
+                bundle.putString("sourceLocation", "prevWorkoutFragment");
                 DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
                 deleteDialog.setArguments(bundle);
                 deleteDialog.show(getActivity().getSupportFragmentManager(), "delete workout dialog");

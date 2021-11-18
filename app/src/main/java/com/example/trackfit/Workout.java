@@ -1,10 +1,10 @@
 package com.example.trackfit;
 
-public class PreviousWorkout {
+public class Workout {
     private String date;
     private String duration;
 
-    public PreviousWorkout(String date, String duration) {
+    public Workout(String date, String duration) {
         this.date = date;
         this.duration = duration;
     }

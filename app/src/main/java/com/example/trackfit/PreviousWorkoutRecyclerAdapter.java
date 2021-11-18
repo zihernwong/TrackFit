@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PreviousWorkoutRecyclerAdapter extends RecyclerView.Adapter<PreviousWorkoutRecyclerAdapter.MyViewHolder> {
-    private ArrayList<PreviousWorkout> previousWorkoutslist;
+    private ArrayList<Workout> workoutslist;
     private RecyclerViewClickListener listener;
 
-    public PreviousWorkoutRecyclerAdapter(ArrayList<PreviousWorkout> previousWorkoutslist, RecyclerViewClickListener listener) {
-        this.previousWorkoutslist = previousWorkoutslist;
+    public PreviousWorkoutRecyclerAdapter(ArrayList<Workout> workoutslist, RecyclerViewClickListener listener) {
+        this.workoutslist = workoutslist;
         this.listener = listener;
     }
 
@@ -46,15 +46,15 @@ public class PreviousWorkoutRecyclerAdapter extends RecyclerView.Adapter<Previou
 
     @Override
     public void onBindViewHolder(@NonNull PreviousWorkoutRecyclerAdapter.MyViewHolder holder, int position) {
-        String date = previousWorkoutslist.get(position).getDate();
-        String duration = previousWorkoutslist.get(position).getDuration();
+        String date = workoutslist.get(position).getDate();
+        String duration = workoutslist.get(position).getDuration();
         holder.dateText.setText(date);
         holder.durationText.setText(duration);
     }
 
     @Override
     public int getItemCount() {
-        return previousWorkoutslist.size();
+        return workoutslist.size();
     }
 
     public interface RecyclerViewClickListener{

@@ -37,13 +37,6 @@ public class ProfileDetailsFragment extends Fragment {
     private EditText days;
     private EditText distance;
     private EditText calories;
-//    private EditText fName;
-//    private String fNameSP;
-//    private String lNameSP;
-//    private String dBirthSP;
-//    private String hFeetSP;
-//    private String hInchesSP;
-//    private String weightSP;
     public ProfileDetailsFragment() {
     }
     public int getGoalDays(){//going to be called when you decide whether to save or delete workout
@@ -62,17 +55,18 @@ public class ProfileDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile_details, container, false);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("com.example.trackfit", Context.MODE_PRIVATE);
-//        String fNameSP = sharedPreferences.getString("FirstName", "");
-//        String lNameSP = sharedPreferences.getString("LastName", "");
-//        this.dBirthSP = sharedPreferences.getString("dateOfBirth", "");
-//        this.hFeetSP = sharedPreferences.getString("heightFeet", "");
-//        this.hInchesSP  = sharedPreferences.getString("hieghtInches", "");
-//        this.weightSP = sharedPreferences.getString("Weight", "");
         EditText fName = (EditText) view.findViewById(R.id.editFirstNameProfileDetails) ;
         fName.setText(sharedPreferences.getString("FirstName", ""));
         EditText lName = (EditText) view.findViewById(R.id.editLastNameProfileDetails) ;
         lName.setText(sharedPreferences.getString("LastName", ""));
-
+        EditText dob = (EditText) view.findViewById(R.id.editDOBProfileDetails) ;
+        dob.setText(sharedPreferences.getString("dateOfBirth", ""));
+        EditText hF = (EditText) view.findViewById(R.id.editHeightFeetProfileDetails) ;
+        hF.setText(sharedPreferences.getString("heightFeet", ""));
+        EditText hI = (EditText) view.findViewById(R.id.editHeightInchesProfileDetails) ;
+        hI.setText(sharedPreferences.getString("heightInches", ""));
+        EditText w = (EditText) view.findViewById(R.id.editWeightProfileDetails) ;
+        w.setText(sharedPreferences.getString("Weight", ""));
 
         days = (EditText) view.findViewById(R.id.editDaysGoalProfileDetails) ;
         this.goalDays = Integer.parseInt(days.getText().toString());

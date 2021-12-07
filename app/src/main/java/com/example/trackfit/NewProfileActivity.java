@@ -54,16 +54,18 @@ public class NewProfileActivity extends AppCompatActivity {
 
                     String fName = etFirstName.getText().toString();
                     String lName = etLastName.getText().toString();
-                    // TODO: Get the rest of the variables as locals
+                    String dBirth = etDOB.getText().toString();
+                    String hFeet = etHeightFeet.getText().toString();
+                    String hInches = etHeightInches.getText().toString();
+                    String weight = etWeight.getText().toString();
 
                     sharedPreferences.edit().putString("username", fName + lName).apply();
                     sharedPreferences.edit().putString("FirstName", fName).apply();
                     sharedPreferences.edit().putString("LastName", lName).apply();
-                    // TODO: Uncomment 4 lines below
-                    //sharedPreferences.edit().putString("dateOfBirth", dBirth).apply();
-                    //sharedPreferences.edit().putString("heightFeet", hFeet).apply();
-                    //sharedPreferences.edit().putString("hieghtInches", hInches ).apply();
-                    //sharedPreferences.edit().putString("Weight", weight).apply();
+                    sharedPreferences.edit().putString("dateOfBirth", dBirth).apply();
+                    sharedPreferences.edit().putString("heightFeet", hFeet).apply();
+                    sharedPreferences.edit().putString("heightInches", hInches ).apply();
+                    sharedPreferences.edit().putString("Weight", weight).apply();
                     displayApp();
                 }
             });

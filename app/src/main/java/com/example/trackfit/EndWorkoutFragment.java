@@ -1,5 +1,7 @@
 package com.example.trackfit;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -49,14 +51,17 @@ private ProfileDetailsFragment Profile;
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.deleteWorkoutButton:
-                Bundle bundle = new Bundle();
-                bundle.putString("sourceLocation", "endWorkoutFragment");
                 DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
-                deleteDialog.setArguments(bundle);
                 deleteDialog.show(getActivity().getSupportFragmentManager(), "delete workout dialog");
                 break;
             case R.id.saveWorkoutButton:
-                // TODO: Save the data
+                Context context = getActivity().getApplicationContext();
+                SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("WorkoutsDB", Context.MODE_PRIVATE,null);
+                DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+
+                // TODO: Hook up real data here
+                dbHelper.saveWorkout("11/25/2021","20 Mins","2","10","200","1000");
+
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();
                 break;
         }

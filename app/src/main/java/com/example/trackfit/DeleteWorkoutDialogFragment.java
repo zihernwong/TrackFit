@@ -2,10 +2,14 @@ package com.example.trackfit;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import java.util.ArrayList;
 
 public class DeleteWorkoutDialogFragment extends AppCompatDialogFragment {
     @Override
@@ -23,6 +27,12 @@ public class DeleteWorkoutDialogFragment extends AppCompatDialogFragment {
                                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();
                                 break;
                             case "prevWorkoutFragment":
+                                // delete in db
+                                // initialize db
+                                Context context = getActivity().getApplicationContext();
+                                SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("WorkoutsDB", Context.MODE_PRIVATE,null);
+                                DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+                                dbHelper.deleteWorkout();
                                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new PreviousWorkoutFragment()).commit();
                                 break;
                         }

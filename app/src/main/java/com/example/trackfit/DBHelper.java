@@ -15,12 +15,11 @@ public class DBHelper {
     public void createTable() {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS workouts" +
                 "(id INTEGER PRIMARY KEY, date TEXT, duration TEXT, distance TEXT, pace TEXT, calories TEXT, steps TEXT)");
-
     }
 
-    public ArrayList<Workout> readWorkout(String username) {
+    public ArrayList<Workout> readWorkout() {
         createTable();
-        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * from workouts where username like '%s'", username), null);
+        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * from workouts"), null);
 
         int dateIndex = c.getColumnIndex("date");
         int durationIndex = c.getColumnIndex("duration");
@@ -53,14 +52,20 @@ public class DBHelper {
 
     public void saveWorkout(String date, String duration, String distance, String pace, String calories, String steps) {
         createTable();
-        sqLiteDatabase.execSQL(String.format("INSERT INTO workouts (username, date, title, content) VALUES ('%s', '%s', '%s', '%s')",
-                date, duration, distance, pace, calories, steps));
+        //sqLiteDatabase.execSQL(String.format("INSERT INTO workouts (date, duration, distance, pace, calories, steps) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+                //date, duration, distance, pace, calories, steps));
+        sqLiteDatabase.execSQL("INSERT INTO workouts (date, duration, distance, pace, calories, steps) VALUES " + String.format("('%s', '%s', %s, %s, %s, %s)", date, duration, distance, pace, calories, steps));
     }
 
-    public void updateWorkout(String date, String duration, String distance, String pace, String calories, String steps) {
+//    public void updateWorkout(String date, String duration, String distance, String pace, String calories, String steps) {
+//        createTable();
+//        sqLiteDatabase.execSQL(String.format("UPDATE workouts set date = '%s', distance = '%s', calories = '%s', steps = '%s' where duration = '%s'",
+//                date, distance, pace, calories, steps, duration));
+//    }
+
+    public void deleteWorkout() {
         createTable();
-        sqLiteDatabase.execSQL(String.format("UPDATE workouts set content = '%s', date = '%s' where title = '%s' and username = '%s'",
-                date, duration, distance, pace, calories, steps));
+        //sqLiteDatabase.execSQL("DELETE FROM workouts WHERE id=" + String.format(("%s"), id));
+        sqLiteDatabase.execSQL("DELETE FROM workouts");
     }
-
 }

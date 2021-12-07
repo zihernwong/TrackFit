@@ -69,10 +69,13 @@ public class ProfileDetailsFragment extends Fragment {
         w.setText(sharedPreferences.getString("Weight", ""));
 
         days = (EditText) view.findViewById(R.id.editDaysGoalProfileDetails) ;
+        days.setText(sharedPreferences.getString("goalDays", ""));
         this.goalDays = Integer.parseInt(days.getText().toString());
         distance = (EditText) view.findViewById(R.id.editDistanceGoalProfileDetails) ;
+        distance.setText(sharedPreferences.getString("goalDistance", ""));
         this.goalDistance = Float.parseFloat(distance.getText().toString());
         calories = (EditText) view.findViewById(R.id.editCaloriesGoalProfileDetails) ;
+        calories.setText(sharedPreferences.getString("goalCalories", ""));
         this.goalCalories = Integer.parseInt(calories.getText().toString());
 
         return view;

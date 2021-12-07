@@ -66,6 +66,9 @@ public class NewProfileActivity extends AppCompatActivity {
                     sharedPreferences.edit().putString("heightFeet", hFeet).apply();
                     sharedPreferences.edit().putString("heightInches", hInches ).apply();
                     sharedPreferences.edit().putString("Weight", weight).apply();
+                    sharedPreferences.edit().putString("goalDistance", "3.0").apply();
+                    sharedPreferences.edit().putString("goalDays", "5").apply();
+                    sharedPreferences.edit().putString("goalCalories", "2000").apply();
                     displayApp();
                 }
             });

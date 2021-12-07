@@ -19,72 +19,47 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class NewProfileActivity extends AppCompatActivity {
-    String usernameKey;
     LocationManager locationManager;
     LocationListener locationListener;
+
     Button createProfileButton;
-    boolean profileFound = false;
     EditText etFirstName;
     EditText etLastName;
     EditText etDOB;
     EditText etHeightFeet;
     EditText etHeightInches;
     EditText etWeight;
-    String fNameFromSP;
-    String lNameFromSP;
-    String dobFromSP;
-    String hFeetFromSP;
-    String hInchesFromSP;
-    String weightFromSP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_profile);
 
-
-        //TODO: Will check shared preferences for profile details. If none are found we display this page
-        // where a new user will enter their details. If details are found then we display the main application
-        // but we still need to get location.
-
         locationStartup();
-
-
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.trackfit", Context.MODE_PRIVATE);
 
-        if (!sharedPreferences.getString(usernameKey, "").equals("")) {
-            //this.fNameFromSP = sharedPreferences.getString("FirstName","");
-            //System.out.println("This code goes here");
+        if (!sharedPreferences.getString("username", "").equals("")) {
            displayApp();
         } else {
-            //System.out.println("Brev");
             createProfileButton = findViewById(R.id.newProfileButton);
-            etFirstName = findViewById(R.id.editFirstNameNewProfile);
-            etLastName = findViewById(R.id.editLastNameNewProfile);
-            etDOB = findViewById(R.id.editDOBNewProfile);
-            etHeightFeet = findViewById(R.id.editHeightFeetProfileDetails);
-            etHeightInches = findViewById(R.id.editHeightInchesProfileDetails);
-            etWeight = findViewById(R.id.editWeightProfileDetails);
-            String fName = etFirstName.getText().toString();
-            String lName = etLastName.getText().toString();
-            String dBirth = etDOB.getText().toString();
-            String hFeet = etHeightFeet.getText().toString();
-            String hInches = etHeightInches.getText().toString();
-            String weight = etWeight.getText().toString();
-            //this.fNameFromSP = sharedPreferences.getString("FirstName"," ghgfh");
             createProfileButton.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View view) {
+                    etFirstName = findViewById(R.id.editFirstNameNewProfile);
+                    etLastName = findViewById(R.id.editLastNameNewProfile);
+                    etDOB = findViewById(R.id.editDOBNewProfile);
+                    etHeightFeet = findViewById(R.id.editHeightFeetProfileDetails);
+                    etHeightInches = findViewById(R.id.editHeightInchesProfileDetails);
+                    etWeight = findViewById(R.id.editWeightProfileDetails);
 
-                    // TODO: Save data in shared preferences first
+                    String fName = etFirstName.getText().toString();
+                    String lName = etLastName.getText().toString();
+                    // TODO: Get the rest of the variables as locals
 
-                    SharedPreferences.Editor editor = getSharedPreferences("com.example.trackfit", Context.MODE_PRIVATE).edit();
-                    editor.putString(usernameKey, "name");
-                    editor.putString("FirstName", "Hern1");
-                    editor.apply();
-                    //sharedPreferences.edit().putString(usernameKey, "name").apply();
-                    //sharedPreferences.edit().putString("FirstName", fName).apply();
-                    //sharedPreferences.edit().putString("LastName", lName).apply();
+                    sharedPreferences.edit().putString("username", fName + lName).apply();
+                    sharedPreferences.edit().putString("FirstName", fName).apply();
+                    sharedPreferences.edit().putString("LastName", lName).apply();
+                    // TODO: Uncomment 4 lines below
                     //sharedPreferences.edit().putString("dateOfBirth", dBirth).apply();
                     //sharedPreferences.edit().putString("heightFeet", hFeet).apply();
                     //sharedPreferences.edit().putString("hieghtInches", hInches ).apply();
@@ -95,11 +70,6 @@ public class NewProfileActivity extends AppCompatActivity {
         }
 
     }
-//SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-//SharedPreferences.Editor editor = sharedPref.edit();
-//editor.putInt(getString(R.string.saved_high_score_key), newHighScore);
-//editor.apply();
-
 
     public void locationStartup() {
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -132,9 +102,7 @@ public class NewProfileActivity extends AppCompatActivity {
             }
         }
     }
-    public String getfNameFromSP(){
-        return this.fNameFromSP;
-    }
+
     public void displayApp() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

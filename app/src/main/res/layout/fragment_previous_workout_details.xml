@@ -13,18 +13,18 @@
         android:layout_marginStart="60dp"
         android:text="Duration of workout"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
+        app:layout_constraintBaseline_toBaselineOf="@+id/detailDurationText"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/detailStepsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:text="0"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/detailCaloriesText"
+        app:layout_constraintTop_toBottomOf="@+id/detailCaloriesText" />
 
     <TextView
         android:id="@+id/textView7"
@@ -32,21 +32,21 @@
         android:layout_height="wrap_content"
         android:text="Distance traveled"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
+        app:layout_constraintBaseline_toBaselineOf="@+id/detailDistanceText"
         app:layout_constraintStart_toStartOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/detailDistanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:text="0.00"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintStart_toStartOf="@+id/detailDurationText"
+        app:layout_constraintTop_toBottomOf="@+id/detailDurationText" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/detailDurationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
@@ -64,29 +64,29 @@
         android:layout_marginEnd="7dp"
         android:text="Date of workout"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintBaseline_toBaselineOf="@+id/detailDateText"
+        app:layout_constraintEnd_toStartOf="@+id/detailDateText"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/detailPaceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:text="0"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintStart_toStartOf="@+id/detailDistanceText"
+        app:layout_constraintTop_toBottomOf="@+id/detailDistanceText" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/detailCaloriesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="0"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintStart_toStartOf="@+id/detailPaceText"
+        app:layout_constraintTop_toBottomOf="@+id/detailPaceText" />
 
     <TextView
         android:id="@+id/textView10"
@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/detailDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -130,23 +130,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
-        android:id="@+id/previousWorkoutDeleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:text="Delete workout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/previousWorkoutBackButton" />
-
-    <Button
         android:id="@+id/previousWorkoutBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="70dp"
         android:text="Back"
-        app:layout_constraintBaseline_toBaselineOf="@+id/previousWorkoutDeleteButton"
-        app:layout_constraintEnd_toStartOf="@+id/previousWorkoutDeleteButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,8 +30,6 @@ public class PreviousWorkoutDetailsFragment extends Fragment implements View.OnC
         View view = inflater.inflate(R.layout.fragment_previous_workout_details, container, false);
         Button backButton = (Button)view.findViewById(R.id.previousWorkoutBackButton);
         backButton.setOnClickListener(this);
-//        Button deleteButton = (Button)view.findViewById(R.id.previousWorkoutDeleteButton);
-//        deleteButton.setOnClickListener(this);
 
         // get data from another fragment
         Bundle bundle = this.getArguments();
@@ -61,20 +59,9 @@ public class PreviousWorkoutDetailsFragment extends Fragment implements View.OnC
         return view;
     }
 
+    // Back button
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-//            case R.id.previousWorkoutDeleteButton:
-//                Bundle bundle = new Bundle();
-//                bundle.putString("sourceLocation", "prevWorkoutFragment");
-//                DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
-//                deleteDialog.setArguments(bundle);
-//                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete workout dialog");
-//                break;
-            case R.id.previousWorkoutBackButton:
-
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new PreviousWorkoutFragment()).commit();
-                break;
-        }
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new PreviousWorkoutFragment()).commit();
     }
 }

@@ -49,15 +49,12 @@ public class PreviousWorkoutFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         setAdapter();
 
-        // Clear All Workouts
+        // Clear All Workouts Dialog
         Button clearButton = view.findViewById(R.id.clearButton);
         clearButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("sourceLocation", "prevWorkoutFragment");
-                DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
-                deleteDialog.setArguments(bundle);
-                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete workout dialog");
+                ClearAllWorkoutDialogFragment clearAllDialog = new ClearAllWorkoutDialogFragment();
+                clearAllDialog.show(getActivity().getSupportFragmentManager(), "Clear all workout dialog");
             }
         });
 

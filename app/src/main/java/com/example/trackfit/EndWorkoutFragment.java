@@ -51,10 +51,7 @@ private ProfileDetailsFragment Profile;
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.deleteWorkoutButton:
-                Bundle bundle = new Bundle();
-                bundle.putString("sourceLocation", "endWorkoutFragment");
                 DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
-                deleteDialog.setArguments(bundle);
                 deleteDialog.show(getActivity().getSupportFragmentManager(), "delete workout dialog");
                 break;
             case R.id.saveWorkoutButton:

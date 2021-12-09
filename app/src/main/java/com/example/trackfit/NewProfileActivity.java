@@ -35,7 +35,6 @@ public class NewProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_profile);
 
-        locationStartup();
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.trackfit", Context.MODE_PRIVATE);
 
         if (!sharedPreferences.getString("username", "").equals("")) {
@@ -74,38 +73,6 @@ public class NewProfileActivity extends AppCompatActivity {
             });
         }
 
-    }
-
-    public void locationStartup() {
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-                // TODO
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {}
-            @Override
-            public void onProviderEnabled(String s) {}
-            @Override
-            public void onProviderDisabled(String s) {}
-        };
-
-        if (Build.VERSION.SDK_INT < 23) {
-            //TODO
-        } else {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            } else {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                if (location != null) {
-                    //TODO
-                }
-            }
-        }
     }
 
     public void displayApp() {

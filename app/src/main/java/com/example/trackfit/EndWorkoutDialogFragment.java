@@ -16,7 +16,9 @@ public class EndWorkoutDialogFragment extends AppCompatDialogFragment {
                 .setPositiveButton("End Workout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new EndWorkoutFragment()).commit();
+                        EndWorkoutFragment endWorkoutFragment = new EndWorkoutFragment();
+                        endWorkoutFragment.setArguments(savedInstanceState);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, endWorkoutFragment).commit();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

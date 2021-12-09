@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 public class EndWorkoutDialogFragment extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Bundle args = this.getArguments();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Confirm Workout End")
                 .setMessage("Are you sure you want to end this workout?")
@@ -17,7 +18,7 @@ public class EndWorkoutDialogFragment extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
                         EndWorkoutFragment endWorkoutFragment = new EndWorkoutFragment();
-                        endWorkoutFragment.setArguments(savedInstanceState);
+                        endWorkoutFragment.setArguments(args);
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, endWorkoutFragment).commit();
                     }
                 })

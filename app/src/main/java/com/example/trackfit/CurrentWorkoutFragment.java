@@ -35,6 +35,7 @@ public class CurrentWorkoutFragment extends Fragment implements View.OnClickList
 
     private int seconds = 0;
     private float stepsTaken = 0f;
+    private float prevSteps = -1f;
     private float distanceTraveled = 0f;
     private Location prevLocation = null;
 
@@ -97,9 +98,11 @@ public class CurrentWorkoutFragment extends Fragment implements View.OnClickList
     // When the sensor detects a step, update the steps taken value
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d("Sensor", "step detected");
-        stepsTaken = event.values[0];
-        currentDistanceTextView.setText((int) stepsTaken);
+        if (prevSteps < 0) {
+            prevSteps = event.values[0];
+        } else {
+            stepsTaken = event.values[0] - prevSteps;
+        }
     }
 
     // Starts the timer and updated UI every second
@@ -127,10 +130,13 @@ public class CurrentWorkoutFragment extends Fragment implements View.OnClickList
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
-                System.out.println("Location changed ran");
-                distanceTraveled +=  location.distanceTo(prevLocation) * METERS_TO_MILES;
-                prevLocation = location;
-                currentDistanceTextView.setText(df.format(distanceTraveled));
+                if (prevLocation == null) {
+                    prevLocation = location;
+                } else {
+                    distanceTraveled +=  location.distanceTo(prevLocation) * METERS_TO_MILES;
+                    prevLocation = location;
+                    currentDistanceTextView.setText(df.format(distanceTraveled));
+                }
             }
 
             @Override
@@ -146,7 +152,7 @@ public class CurrentWorkoutFragment extends Fragment implements View.OnClickList
             if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             } else {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
                 Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 if (location != null) {
                     prevLocation = location;

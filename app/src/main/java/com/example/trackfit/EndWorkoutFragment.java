@@ -1,6 +1,7 @@
 package com.example.trackfit;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -12,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class EndWorkoutFragment extends Fragment implements View.OnClickListener {
@@ -21,6 +25,9 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
     private TextView goalDaysDisplay;
     private TextView goalDistanceDisplay;
     private TextView goalCaloriesDisplay;
+
+    private int caloriesBurntDuringWorkout;
+
     private String gDays;
     private String gDistance;
     private String gCalories;
@@ -34,6 +41,7 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_end_workout, container, false);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("com.example.trackfit", Context.MODE_PRIVATE);
 
         // Get references to UI elements
         Button saveWorkout = (Button) view.findViewById(R.id.saveWorkoutButton);
@@ -56,14 +64,17 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
         goalDistanceDisplay.setText("0/" + gDistance);//hardcoded till we figure out the days
         goalCaloriesDisplay.setText("0/" + gCalories);
 
-        int totalTime = savedInstanceState.getInt("time");
-        float totalDistance = savedInstanceState.getFloat("distance");
-        float totalSteps = savedInstanceState.getFloat("steps");
+        int totalTime = getArguments().getInt("time");
+        float totalDistance = getArguments().getFloat("distance");
+        float totalSteps = getArguments().getFloat("steps");
+        String weight = sharedPreferences.getString("Weight", "");
+
+        caloriesBurntDuringWorkout = calculateCalories(totalTime, weight);
 
         duration.setText(formatTime(totalTime));
         distance.setText(df.format(totalDistance));
         stepsTaken.setText(String.valueOf((int) totalSteps));
-        caloriesBurned.setText(String.valueOf((int) calculateCalories()));
+        caloriesBurned.setText(String.valueOf(caloriesBurntDuringWorkout));
         pace.setText(calculatePace(totalTime, totalDistance));
 
         saveWorkout.setOnClickListener(this);
@@ -73,6 +84,10 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        int totalTime = getArguments().getInt("time");
+        float totalDistance = getArguments().getFloat("distance");
+        float totalSteps = getArguments().getFloat("steps");
+
         switch (v.getId()) {
             case R.id.deleteWorkoutButton:
                 DeleteWorkoutDialogFragment deleteDialog = new DeleteWorkoutDialogFragment();
@@ -83,8 +98,11 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
                 SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("WorkoutsDB", Context.MODE_PRIVATE,null);
                 DBHelper dbHelper = new DBHelper(sqLiteDatabase);
 
-                // TODO: Hook up real data here
-                dbHelper.saveWorkout("11/25/2021","20 Mins","2","10","200","1000");
+                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                Date date = new Date();
+
+                dbHelper.saveWorkout(dateFormat.format(date), formatTime(totalTime), df.format(totalDistance),
+                        calculatePace(totalTime, totalDistance),String.valueOf(caloriesBurntDuringWorkout), String.valueOf((int) totalSteps));
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();
                 break;
@@ -99,9 +117,10 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
         return String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, secs);
     }
 
-    private float calculateCalories() {
-        // TODO
-        return 0f;
+    private int calculateCalories(int duration, String weight) {
+        int mins = duration / 60;
+        double weight_kg = Integer.parseInt(weight) * 0.453592;
+        return (int) (((9.8 * 3.5 * weight_kg) / 200) * mins);
     }
 
     private String calculatePace(int time, float distance) {

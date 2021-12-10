@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.69" />
 
     <TextView
-        android:id="@+id/currentElapsedTime"
+        android:id="@+id/totalElapsedTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0:00:00"
@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.757" />
 
     <TextView
-        android:id="@+id/currentDistance"
+        android:id="@+id/totalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0.00"

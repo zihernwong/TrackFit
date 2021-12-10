@@ -54,7 +54,7 @@ public class DBHelper {
         createTable();
         //sqLiteDatabase.execSQL(String.format("INSERT INTO workouts (date, duration, distance, pace, calories, steps) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
                 //date, duration, distance, pace, calories, steps));
-        sqLiteDatabase.execSQL("INSERT INTO workouts (date, duration, distance, pace, calories, steps) VALUES " + String.format("('%s', '%s', %s, %s, %s, %s)", date, duration, distance, pace, calories, steps));
+        sqLiteDatabase.execSQL("INSERT INTO workouts (date, duration, distance, pace, calories, steps) VALUES " + String.format("('%s', '%s', '%s', '%s', '%s', '%s')", date, duration, distance, pace, calories, steps));
     }
 
 //    public void updateWorkout(String date, String duration, String distance, String pace, String calories, String steps) {

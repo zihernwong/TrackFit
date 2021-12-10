@@ -101,7 +101,7 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
                 DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
                 Date date = new Date();
 
-                dbHelper.saveWorkout(dateFormat.format(date), formatTime(totalTime), df.format(totalDistance),
+                dbHelper.saveWorkout(dateFormat.format(date), formatTime(totalTime), df.format(totalDistance) + " mi",
                         calculatePace(totalTime, totalDistance),String.valueOf(caloriesBurntDuringWorkout), String.valueOf((int) totalSteps));
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new WorkoutFragment()).commit();

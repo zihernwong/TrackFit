@@ -57,10 +57,11 @@ public class EndWorkoutFragment extends Fragment implements View.OnClickListener
 
         // Populate UI elements with correct values
         Profile = new ProfileDetailsFragment();
-        gDays = String.valueOf(Profile.getGoalDays());//fetch the goals the user inputted
-        gDistance = String.valueOf(Profile.getGoalDistance());//fetch the goals the user inputted
-        gCalories = String.valueOf(Profile.getGoalCalories());//fetch the goals the user inputted
+        gDays = sharedPreferences.getString("goalDays", "");;//fetch the goals the user inputted
+        gDistance = sharedPreferences.getString("goalDistance", "");//fetch the goals the user inputted
+        gCalories = sharedPreferences.getString("goalCalories", "");//fetch the goals the user inputted
         goalDaysDisplay.setText("0/"+gDays);//hardcoded till we figure out the days days++
+        String curDist = "";
         goalDistanceDisplay.setText("0/" + gDistance);//hardcoded till we figure out the days
         goalCaloriesDisplay.setText("0/" + gCalories);
 
